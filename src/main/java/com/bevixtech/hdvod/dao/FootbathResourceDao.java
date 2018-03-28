@@ -1,6 +1,6 @@
-package com.bevixtech.hdvod.DAO;
+package com.bevixtech.hdvod.dao;
 
-import com.bevixtech.hdvod.Model.FootbathResource;
+import com.bevixtech.hdvod.model.FootbathResource;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

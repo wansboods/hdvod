@@ -1,7 +1,7 @@
 package com.bevixtech.hdvod.service.impl;
 
-import com.bevixtech.hdvod.DAO.FootbathResourceDao;
-import com.bevixtech.hdvod.Model.FootbathResource;
+import com.bevixtech.hdvod.dao.FootbathResourceDao;
+import com.bevixtech.hdvod.model.FootbathResource;
 import com.bevixtech.hdvod.service.FootbathResourceService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

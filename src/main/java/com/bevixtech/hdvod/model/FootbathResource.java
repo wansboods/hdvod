@@ -1,4 +1,4 @@
-package com.bevixtech.hdvod.Model;
+package com.bevixtech.hdvod.model;
 
 import java.util.Date;
 

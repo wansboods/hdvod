@@ -1,6 +1,6 @@
 package com.bevixtech.hdvod.controller;
 
-import com.bevixtech.hdvod.model.FootbathResource;
+import com.bevixtech.hdvod.entity.FootbathResource;
 import com.bevixtech.hdvod.service.FootbathResourceService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

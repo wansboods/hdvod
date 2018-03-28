@@ -1,6 +1,6 @@
 package com.bevixtech.hdvod.service;
 
-import com.bevixtech.hdvod.model.FootbathResource;
+import com.bevixtech.hdvod.entity.FootbathResource;
 
 import java.util.List;
 

@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bevixtech.hdvod.dao.FootbathResourceDao">
 
-    <select id="selectAllFootbathResource" resultMap="UserBaseMap">
+    <select id="selectAllFootbathResource" resultType="FootbathResource">
         SELECT * FROM fbh_resource_mgr;
     </select>
 </mapper>

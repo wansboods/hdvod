@@ -5,6 +5,7 @@ import com.bevixtech.hdvod.service.FootbathResourceService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,17 +17,26 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/resource")
+//@RequestMapping(value = "/peakfortake")
 public class FootbathResourceController {
 
     Logger ptr = LoggerFactory.getLogger( this.getClass() );
     @Resource
     private FootbathResourceService footbathResourceService;
 
-    @RequestMapping( value = "/footbathResource.do", method = RequestMethod.GET )
-    @ResponseBody
+//    @RequestMapping(value = "/hello", method = RequestMethod.GET)
+//    public String printHello(ModelMap model) {
+//        model.addAttribute("msg", "Spring MVC Hello World");
+//        model.addAttribute("name", "yuntao");
+//        return "hello";
+//    }
+
+    //@RequestMapping( value = "/footbathResource.do", method = RequestMethod.GET )
+    //@ResponseBody
+    @RequestMapping(value = "/test.do",method = RequestMethod.GET)
     private Map<String,Object> getFoootbathResource(  ){
         long startTime = System.currentTimeMillis();
+        ptr.info( "ssssssssssssssssssssssss" );
         Map<String,Object> modelMap = new HashMap<String, Object>();
         List<FootbathResource> list = new ArrayList<FootbathResource>();
         ptr.info( "ssssssssssssssssssssssss" );

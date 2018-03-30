@@ -1,5 +1,9 @@
 package com.bevixtech.hdvod.interceptor;
 
+import com.bevixtech.hdvod.dto.ResponseHead;
+import com.bevixtech.hdvod.enums.ResultCodeEmum;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.ModelAndView;
@@ -7,7 +11,8 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
 
 public class APIInterceptor extends HandlerInterceptorAdapter {
 
@@ -22,21 +27,41 @@ public class APIInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle( HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 //        ptr.info( request );
-        ptr.info( "--------------- 1");
+//        ptr.info( "--------------- 1{}|{}", request.getContextPath(),request.getRequestURL() );
+        String token = request.getParameter("token" );
+//        ptr.info( "--------------- token={}", token );
+        // 1.token 值没有
+        // 2.token 无效
+        ResponseHead responseHead;
+        if( null == token ){
+            String uuid = request.getParameter("uuid" );
+            if( null == uuid ) {
+                responseHead = new ResponseHead();
+                responseHead.setResultCode(ResultCodeEmum.failureToken.getCode());
+                responseHead.setResultDesc(ResultCodeEmum.failureToken.getName());
+                response.getWriter().write(JSONObject.fromObject(responseHead).toString());
+            }else{
 
-        String token = request.getParameter("token");
-        // token is not needed when debug
-        if( token == null ) return true;  // !! remember to comment this when deploy on server !!
-        Enumeration paraKeys = request.getParameterNames();
-        String encodeStr = "";
-        ptr.info( "-----------------------request{}", request );
-        while( paraKeys.hasMoreElements() ) {
-            String paraKey = (String) paraKeys.nextElement();
-            if(paraKey.equals("token"))
-                break;
-            String paraValue = request.getParameter(paraKey);
-            encodeStr += paraValue;
+            }
+        }else{
+            // 2. 校验 token
         }
+
+        return false;
+
+
+        // token is not needed when debug
+//        if( token == null ) return true;  // !! remember to comment this when deploy on server !!
+//        Enumeration paraKeys = request.getParameterNames();
+//        String encodeStr = "";
+//        ptr.info( "-----------------------request{}", request );
+//        while( paraKeys.hasMoreElements() ) {
+//            String paraKey = (String) paraKeys.nextElement();
+//            if(paraKey.equals("token"))
+//                break;
+//            String paraValue = request.getParameter(paraKey);
+//            encodeStr += paraValue;
+//        }
 
 //        encodeStr += Default.TOKEN_KEY;
 //        Log.out(encodeStr);
@@ -46,7 +71,7 @@ public class APIInterceptor extends HandlerInterceptorAdapter {
 //            return false;
 //        }
 
-        return true;
+//        return true;
     }
 
     /**
@@ -68,11 +93,7 @@ public class APIInterceptor extends HandlerInterceptorAdapter {
      */
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        ptr.info( "--------------- 3");
+        ptr.info( "--------------- 3{}", request );
     }
-
-
-
-
 
 }

@@ -1,19 +1,14 @@
 package com.bevixtech.hdvod.controller;
 
 import com.bevixtech.hdvod.base.BaseController;
-import com.bevixtech.hdvod.base.BaseService;
 import com.bevixtech.hdvod.entity.FootbathResource;
 import com.bevixtech.hdvod.service.FootbathResourceService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

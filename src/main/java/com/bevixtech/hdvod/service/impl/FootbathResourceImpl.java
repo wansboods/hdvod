@@ -1,5 +1,6 @@
 package com.bevixtech.hdvod.service.impl;
 
+import com.bevixtech.hdvod.base.BaseService;
 import com.bevixtech.hdvod.dao.FootbathResourceDao;
 import com.bevixtech.hdvod.entity.FootbathResource;
 import com.bevixtech.hdvod.service.FootbathResourceService;
@@ -11,11 +12,9 @@ import java.util.List;
 
 @Service
 @Transactional(rollbackFor = Exception.class)
-public class FootbathResourceImpl implements FootbathResourceService{
-    @Resource
-    private FootbathResourceDao footbathResourceDao;
+public class FootbathResourceImpl extends BaseService<FootbathResourceDao> implements FootbathResourceService{
 
     public List<FootbathResource> getAllFootbathResource() {
-        return footbathResourceDao.selectAllFootbathResource();
+        return baseEntityMapper.selectAllFootbathResource();
     }
 }

@@ -1,5 +1,7 @@
 package com.bevixtech.hdvod.controller;
 
+import com.bevixtech.hdvod.base.BaseController;
+import com.bevixtech.hdvod.base.BaseService;
 import com.bevixtech.hdvod.entity.FootbathResource;
 import com.bevixtech.hdvod.service.FootbathResourceService;
 import org.slf4j.Logger;
@@ -19,24 +21,21 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/vm")
-public class FootbathResourceController {
+public class FootbathResourceController extends BaseController<FootbathResourceService> {
     Logger ptr = LoggerFactory.getLogger( this.getClass() );
-    @Resource
-    private FootbathResourceService footbathResourceService;
+
 
     @RequestMapping(value = "/test.do",method = RequestMethod.GET)
     @ResponseBody
     private Map<String,Object> getFoootbathResource(  ){
         long startTime = System.currentTimeMillis();
-        ptr.info( "ssssssssssssssssssssssss" );
         Map<String,Object> modelMap = new HashMap<String, Object>();
-        //List<FootbathResource> list = new ArrayList<FootbathResource>();
-        ptr.info( "ssssssssssssssssssssssss" );
+        List<FootbathResource> list = new ArrayList<FootbathResource>();
         try{
-            //list = footbathResourceService.getAllFootbathResource();
+            list = baseService.getAllFootbathResource();
             modelMap.put( "success", true );
-            modelMap.put( "rows", 7 );
-            modelMap.put( "total", 0 );
+            modelMap.put( "total", list.size() );
+            modelMap.put( "jsondata", list );
         }catch (Exception e){
             e.printStackTrace();
             modelMap.put( "success", false );
@@ -45,7 +44,6 @@ public class FootbathResourceController {
 
         long endTime = System.currentTimeMillis();
         ptr.debug( "costTime:[{}ms]", endTime - startTime );
-        System.out.print( ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" );
         ptr.info( "=== 结束运行{} ===", "测试数据" );
         return modelMap;
     }
